@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>org</groupId>
+	<artifactId>example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>example</name>
+	<description>OpenapiWrongResponseCodeDemoApplication</description>
+	<properties>
+		<java.version>17</java.version>
+		<springdoc.version>2.3.0</springdoc.version>
+		<openapi-generator.version>7.2.0</openapi-generator.version>
+		<jackon-databind-nullable.version>0.2.6</jackon-databind-nullable.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>${jackon-databind-nullable.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>clean-generated-sources</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>${project.basedir}/src/main/java/org/example/generated</directory>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+				<version>${openapi-generator.version}</version>
+
+				<configuration>
+					<generatorName>spring</generatorName>
+					<output>${project.basedir}</output>
+					<generateModelTests>false</generateModelTests>
+					<generateApiTests>false</generateApiTests>
+					<apiPackage>${project.groupId}.${project.artifactId}.generated.api</apiPackage>
+					<modelPackage>${project.groupId}.${project.artifactId}.generated.dto</modelPackage>
+					<supportingFilesToGenerate>ApiUtil.java,HomeController.java,SpringDocConfiguration.java</supportingFilesToGenerate>
+					<modelNameSuffix>Dto</modelNameSuffix>
+
+					<configOptions>
+						<library>spring-boot</library>
+						<java8>true</java8>
+						<delegatePattern>true</delegatePattern>
+						<hideGenerationTimestamp>true</hideGenerationTimestamp>
+						<useSpringBoot3>true</useSpringBoot3>
+						<configPackage>${project.groupId}.${project.artifactId}.generated.config</configPackage>
+						<useTags>false</useTags>
+					</configOptions>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>generate-without-template</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>src/main/resources/openapi.yaml</inputSpec>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>
