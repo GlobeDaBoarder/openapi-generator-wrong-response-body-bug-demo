@@ -1,21 +1,21 @@
 # Response bodies bug in OpenAPI Spring generator
 
 ## Table of contents:
-1. [Bug Decription](##bug-description)
+1. [Bug Decription](#bug-description)
    
-   1.1. [What the bug is](##what-bug)
+   1.1. [What the bug is](#what-bug)
    
-   1.2. [Why this is happening](##why)
+   1.2. [Why this is happening](#why)
 
-3. [Proposed solution: bugfix](##solution)
+3. [Proposed solution: bugfix](#solution)
    
-   2.1. [What should be changed to fix bug](##be-changed)
+   2.1. [What should be changed to fix bug](#be-changed)
    
-   2.2. [Results of the changes in Swagger Annotations](##res1)
+   2.2. [Results of the changes in Swagger Annotations](#res1)
    
-   2.3. [Results of the changes in SwaggerUI: bug fixed](##res2)
+   2.3. [Results of the changes in SwaggerUI: bug fixed](#res2)
 
-## Bug Decription <a name="bug-description></a>
+## Bug Decription <a name="bug-description"></a>
 ## ❗ _To reproduce, checkout the `bug-showcase` branch_ 
 It's as simple as:
 - ```bash
