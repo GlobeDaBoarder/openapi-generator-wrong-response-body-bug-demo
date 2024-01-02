@@ -99,13 +99,14 @@
 
 				<executions>
 					<execution>
-						<id>generate-without-template</id>
+						<id>generate-with-template</id>
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
 							<inputSpec>src/main/resources/openapi.yaml</inputSpec>
+							<templateDirectory>src/main/resources/templates</templateDirectory>
 						</configuration>
 					</execution>
 				</executions>
